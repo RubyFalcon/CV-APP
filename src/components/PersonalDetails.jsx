@@ -1,10 +1,10 @@
-export default function PersonalDetails({ personalInfo }) {
+export default function PersonalDetails({ personalDetails }) {
   return (
     <div>
       <h1>Personal Information</h1>
-      <p>Name: {personalInfo.name}</p>
-      <p>Email: {personalInfo.email}</p>
-      <p>Phone: {personalInfo.phone}</p>
+      <p>Name: {personalDetails.name}</p>
+      <p>Email: {personalDetails.email}</p>
+      <p>Phone: {personalDetails.phone}</p>
     </div>
   );
 }
