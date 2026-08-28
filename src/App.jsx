@@ -17,14 +17,19 @@ function App() {
     }))
   }
   return (
-    <>  
+    <div className="app">  
+      <h1>CV Builder</h1>
+      <div className="forms-panel">
       <PersonalDetailsForm personalDetails={data.personalDetails} onSave={(newData) => handleSave('personalDetails', newData)} />
       <EducationForm education={data.education} onSave={(newData) => handleSave('education', newData)} />
       <WorkExperienceForm workExperience={data.workExperience} onSave={(newData) => handleSave('workExperience', newData)} />
+      </div>
+      <div className="cv-page">
       <PersonalDetails personalDetails={data.personalDetails} />
       <Education education={data.education} />
       <WorkExperience workExperience={data.workExperience} />
-    </>
+      </div>
+    </div>
   )
 }
 
