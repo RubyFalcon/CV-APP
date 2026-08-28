@@ -4,10 +4,10 @@ A React app that lets users fill in their personal information, education histor
 
 ## Features
 
-- **Personal Info** — name, email, and phone number
+- **Personal Info** — name, email, phone number, and address
 - **Education** — school name, title of study, and dates
 - **Work Experience** — company, position, responsibilities, and dates
-- Edit and submit functionality for each section, allowing users to update their information after initial entry
+- Edit and submit functionality for each section, allowing users to update their information after initial entry (WIP)
 
 ## Tech Stack
 
@@ -23,4 +23,4 @@ npm run dev
 
 ## Deployment
 
-This project is deployed with [Netlify / Vercel / Cloudflare Pages] *(update once you've deployed)*.
+This project is deployed with Vercel at https://ruby-cv-app.vercel.app/
