@@ -1,10 +1,13 @@
 import { useState } from 'react';
 
 export default function EducationForm({ education, onSave }) {
-  const [formData, setFormData] = useState(education || {});
+  const [formData, setFormData] = useState({});
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave(formData);
+    const updatedEducation = [...education, formData];
+    onSave(updatedEducation);
+    setFormData({}); 
   };
 
   const handleChange = (e) => {
