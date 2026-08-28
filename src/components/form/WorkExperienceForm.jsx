@@ -1,10 +1,12 @@
 import { useState } from 'react';
 export default function WorkExperienceForm({ workExperience, onSave }) {
-  const [formData, setFormData] = useState(workExperience || {});
+  const [formData, setFormData] = useState({});
 
-  const handleSubmit = (e) => {
+   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave(formData);
+    const updatedWorkExperience = [...workExperience, formData];
+    onSave(updatedWorkExperience);
+    setFormData({}); 
   };
 
   const handleChange = (e) => {
@@ -33,16 +35,16 @@ export default function WorkExperienceForm({ workExperience, onSave }) {
       />
       <input
         type="text"
-        name="startDate"
+        name="dateFrom"
         placeholder="Start Date"
-        value={formData.startDate || ''}
+        value={formData.dateFrom || ''}
         onChange={handleChange}
       />
       <input
         type="text"
-        name="endDate"
+        name="dateTo"
         placeholder="End Date"
-        value={formData.endDate || ''}
+        value={formData.dateTo || ''}
         onChange={handleChange}
       />
       <input
