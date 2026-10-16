@@ -4,7 +4,8 @@ export default function WorkExperienceForm({ workExperience, onSave }) {
 
    const handleSubmit = (e) => {
     e.preventDefault();
-    const updatedWorkExperience = [...workExperience, formData];
+    const newWorkExperienceEntry = { ...formData, id: crypto.randomUUID() };
+    const updatedWorkExperience = [...workExperience, newWorkExperienceEntry];
     onSave(updatedWorkExperience);
     setFormData({}); 
   };

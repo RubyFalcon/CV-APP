@@ -8,6 +8,7 @@ export const initialData = {
   },
   education: [
     {
+      id: crypto.randomUUID(),
       school: 'State University',
       title: 'B.S. Computer Science',
       dateOfStudy: '2018 - 2022',
@@ -15,6 +16,7 @@ export const initialData = {
   ],
   workExperience: [
     {
+      id: crypto.randomUUID(),
       company: 'Acme Corp',
       position: 'Frontend Developer',
       responsibilities: 'Built and maintained UI components, collaborated with design team.',

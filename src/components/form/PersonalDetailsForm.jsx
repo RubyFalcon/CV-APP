@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 export default function PersonalDetailsForm({ personalDetails, onSave }) {
   const [formData, setFormData] = useState(personalDetails || {});
 
