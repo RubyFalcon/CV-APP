@@ -1,13 +1,21 @@
 import { useState } from 'react';
 
-export default function EducationForm({ education, onSave, editing }) {
-  const [formData, setFormData] = useState({});
+export default function EducationForm({ education, onSave, editingData }) {
+  const [formData, setFormData] = useState(editingData || {});
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newEducationEntry = { ...formData, id: crypto.randomUUID() };
-    const updatedEducation = [...education, newEducationEntry];
-    onSave(updatedEducation);
+    const newEducationEntry = { ...formData, id: formData.id || crypto.randomUUID() };
+  
+    if (editingData) {
+      const updatedEducation = education.map((edu) =>
+        edu.id === newEducationEntry.id ? newEducationEntry : edu
+      );
+      onSave(updatedEducation);
+    } else {
+      const updatedEducation = [...education, newEducationEntry];
+      onSave(updatedEducation);
+    }
     setFormData({}); 
   };
 

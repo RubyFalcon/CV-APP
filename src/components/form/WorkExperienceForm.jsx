@@ -1,12 +1,19 @@
 import { useState } from 'react';
-export default function WorkExperienceForm({ workExperience, onSave }) {
-  const [formData, setFormData] = useState({});
+export default function WorkExperienceForm({ workExperience, onSave, editingData }) {
+  const [formData, setFormData] = useState(editingData || {});
 
    const handleSubmit = (e) => {
     e.preventDefault();
-    const newWorkExperienceEntry = { ...formData, id: crypto.randomUUID() };
-    const updatedWorkExperience = [...workExperience, newWorkExperienceEntry];
-    onSave(updatedWorkExperience);
+    const newWorkExperienceEntry = { ...formData, id: formData.id || crypto.randomUUID() };
+    if (editingData) {
+      const updatedWorkExperience = workExperience.map((work) =>
+        work.id === newWorkExperienceEntry.id ? newWorkExperienceEntry : work
+      );
+      onSave(updatedWorkExperience);
+    } else {
+      const updatedWorkExperience = [...workExperience, newWorkExperienceEntry];
+      onSave(updatedWorkExperience);
+    }
     setFormData({}); 
   };
 

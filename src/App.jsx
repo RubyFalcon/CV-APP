@@ -20,6 +20,7 @@ function App() {
       ...prevData,
       [key]: newData,
     }));
+    setEditing({ section: null, id: null });
   };
   return (
     <div className="app">
@@ -30,6 +31,7 @@ function App() {
           onSave={(newData) => handleSave("personalDetails", newData)}
         />
         <EducationForm
+          key={editing.section === "education" ? editing.id : "new-education"}
           education={data.education}
           onSave={(newData) => handleSave("education", newData)}
           editingData={
@@ -37,6 +39,7 @@ function App() {
           }
         />
         <WorkExperienceForm
+          key={editing.section === "workExperience" ? editing.id : "new-work-experience"}
           workExperience={data.workExperience}
           onSave={(newData) => handleSave("workExperience", newData)}
           editingData={
