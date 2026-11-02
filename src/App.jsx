@@ -6,7 +6,9 @@ import WorkExperienceForm from "./components/form/WorkExperienceForm.jsx";
 import PersonalDetails from "./components/PersonalDetails.jsx";
 import Education from "./components/Education.jsx";
 import WorkExperience from "./components/WorkExperience.jsx";
-import "./App.css";
+import "./styles/App.css";
+import "./styles/FormsPanel.css";
+import "./styles/CvPreview.css";
 
 function App() {
   const [data, setData] = useState(initialData);
@@ -34,12 +36,14 @@ function App() {
           key={editing.section === "education" ? editing.id : "new-education"}
           education={data.education}
           onSave={(newData) => handleSave("education", newData)}
-          editingData={
-            editing.section === "education" ? editingData : null
-          }
+          editingData={editing.section === "education" ? editingData : null}
         />
         <WorkExperienceForm
-          key={editing.section === "workExperience" ? editing.id : "new-work-experience"}
+          key={
+            editing.section === "workExperience"
+              ? editing.id
+              : "new-work-experience"
+          }
           workExperience={data.workExperience}
           onSave={(newData) => handleSave("workExperience", newData)}
           editingData={

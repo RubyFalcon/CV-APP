@@ -1,0 +1,30 @@
+.cv-page {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  max-width: 720px;
+  padding: 3rem 3.5rem;
+  font-family: var(--font-cv);
+  color: var(--ink);
+}
+
+
+
+.cv-page h2 {
+  font-size: 1.3rem;
+  margin: 1.75rem 0 0.5rem;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.4rem;
+}
+.cv-page h3 {
+  font-size: 1.1rem;
+  margin: 1rem 0 0.25rem;
+  color: var(--accent);
+}
+
+.cv-page p {
+  margin: 0.2rem 0;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
