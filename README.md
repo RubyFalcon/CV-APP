@@ -1,26 +1,61 @@
 # CV Application
 
-A React app that lets users fill in their personal information, education history, and work experience to generate a live CV/résumé. Built as a project for [The Odin Project](https://www.theodinproject.com/) React course.
+A React app for building a CV/résumé. Fill in your personal details, education and work experience on the left, and the CV updates on the right. Built as part of [The Odin Project](https://www.theodinproject.com/lessons/node-path-react-new-cv-application) React course.
+
+**Live demo:** https://ruby-cv-app.vercel.app/
 
 ## Features
 
-- **Personal Info** — name, email, phone number, and address
-- **Education** — school name, title of study, and dates
-- **Work Experience** — company, position, responsibilities, and dates
-- Edit and submit functionality for each section, allowing users to update their information after initial entry (WIP)
+- **Personal details**: name, email, phone and address, saved straight to the CV preview
+- **Education**: add multiple entries (school, title of study, dates of study)
+- **Work experience**: add multiple entries (company, position, responsibilities, start and end dates)
+- **Edit entries**: click Edit on any education or work entry to load it back into its form, change it, and save it over the original
+- **Live CV preview** in a two-column layout
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── form/          # Input forms for each section
+│   ├── Education.jsx
+│   ├── PersonalDetails.jsx
+│   └── WorkExperience.jsx
+├── data/              # Initial example CV data
+├── hooks/
+│   └── useFormData.js # Shared form state + change handling
+├── styles/            # Global, layout, forms panel and CV preview CSS
+├── utils/
+│   └── upsertById.js  # Add-or-update an entry in a list by id
+├── App.jsx            # Holds CV state and editing state
+└── main.jsx
+```
+
+## What I Learned
+
+- **Lifting state up**: all CV data lives in `App` and is passed down through props, with changes sent back up through callbacks
+- **Resetting component state with `key`**: `useState` only reads its initial value on the first render, so each form is keyed by the entry being edited to make React remount it with fresh data
+- **Immutable updates**: adding or replacing entries without mutating state
+- **Custom hooks**: pulling shared form logic out of three components into `useFormData`
 
 ## Tech Stack
 
 - [React](https://react.dev/)
-- [Vite](https://vite.dev/) for build tooling and dev server
+- [Vite](https://vite.dev/)
+- Deployed on [Vercel](https://vercel.com/)
 
 ## Getting Started
 
 ```bash
+git clone git@github.com:RubyFalcon/CV-APP.git
+cd CV-APP
 npm install
 npm run dev
 ```
 
-## Deployment
+## Possible Improvements
 
-This project is deployed with Vercel at https://ruby-cv-app.vercel.app/
+- Edit/submit toggle for the personal details section
+- Delete button for entries
+- Labels and a textarea for better accessibility
+- Persist data with `localStorage`
