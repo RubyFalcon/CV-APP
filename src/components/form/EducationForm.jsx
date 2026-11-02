@@ -1,31 +1,16 @@
-import { useState } from 'react';
-
+import { useFormData } from '../../hooks/useFormData.js';
+import {upsertById} from '../../utils/upsertById.js';
 export default function EducationForm({ education, onSave, editingData }) {
-  const [formData, setFormData] = useState(editingData || {});
+  const { formData, handleChange, resetForm } = useFormData(editingData || {});
   
   const handleSubmit = (e) => {
     e.preventDefault();
     const newEducationEntry = { ...formData, id: formData.id || crypto.randomUUID() };
-  
-    if (editingData) {
-      const updatedEducation = education.map((edu) =>
-        edu.id === newEducationEntry.id ? newEducationEntry : edu
-      );
-      onSave(updatedEducation);
-    } else {
-      const updatedEducation = [...education, newEducationEntry];
-      onSave(updatedEducation);
-    }
-    setFormData({}); 
+    const updatedEducation = upsertById(education, newEducationEntry);
+    onSave(updatedEducation);
+    resetForm();
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -33,21 +18,21 @@ export default function EducationForm({ education, onSave, editingData }) {
         type="text"
         name="school"
         placeholder="School"
-        value={formData.school || ''}
+        value={formData.school || ""}
         onChange={handleChange}
       />
       <input
         type="text"
         name="title"
         placeholder="Degree Title"
-        value={formData.title || ''}
+        value={formData.title || ""}
         onChange={handleChange}
       />
       <input
         type="text"
         name="dateOfStudy"
         placeholder="Date of Study"
-        value={formData.dateOfStudy || ''}
+        value={formData.dateOfStudy || ""}
         onChange={handleChange}
       />
       <button type="submit">Save</button>
